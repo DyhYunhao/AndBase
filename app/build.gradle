@@ -1,0 +1,68 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+}
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    //使用HttpClient需要导入
+    useLibrary 'org.apache.http.legacy'
+
+    dexOptions { javaMaxHeapSize "4096M" }
+
+    //防止编译时出现资源出错，一般网上下载的图片有的会将jpg转为png导致gradle编译出错
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
+
+    defaultConfig {
+        applicationId "com.dyh.andbase"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.version_name
+        ndk {
+            abiFilters /*'armeabi', 'armeabi-v7a',  'x86',  */ 'armeabi-v7a'
+        }
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'boolean', 'LOG_FLAG', 'false'
+            buildConfigField 'boolean', 'DEBUG_FLAG', 'false'
+        }
+
+        debug {
+            buildConfigField 'boolean', 'LOG_FLAG', 'true'
+            buildConfigField 'boolean', 'DEBUG_FLAG', 'true'
+        }
+    }
+
+    //更改apk打包后的名称，Android studio3.0之后
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "andBase_" + defaultConfig.versionCode + "_v" + defaultConfig.versionName + "_" + buildType.name + ".apk"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    if (rootProject.ext.isMoudle) {
+        implementation project(':moudle:base')
+    }
+}
