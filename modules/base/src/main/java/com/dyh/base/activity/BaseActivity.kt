@@ -7,4 +7,5 @@ package com.dyh.base.activity
  *********************************************
  */
 class BaseActivity {
+
 }

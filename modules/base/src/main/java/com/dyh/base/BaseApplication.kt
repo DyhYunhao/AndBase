@@ -13,7 +13,7 @@ import android.app.Application
  *      也就从根本上解决了我们不能直接从各个组件获取全局 Context 的问题
  ******************************************************************************************
  */
-class BaseApplication: Application() {
+class BaseApplication : Application() {
     companion object {
         //kotlin静态变量，底层实现与java的静态变量一致
         @JvmField
