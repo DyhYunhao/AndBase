@@ -4,11 +4,28 @@
     android:id="@+id/ll_dialog_loading"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
+    android:gravity="center"
     android:minWidth="150dp"
     android:minHeight="110dp"
     android:background="@drawable/dialog_loading">
 
-
+    <ProgressBar
+        android:id="@+id/pb_progress"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center_horizontal"
+        android:indeterminateBehavior="repeat"
+        android:indeterminateDrawable="@drawable/dialog_loading"
+        />
+    
+    <TextView
+        android:id="@+id/tv_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/loading"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        />
 
 </LinearLayout>

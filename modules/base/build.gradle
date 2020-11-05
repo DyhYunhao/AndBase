@@ -31,6 +31,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        dataBinding = true
+        // for view binding :
+        // viewBinding = true
+    }
 }
 
 dependencies {
@@ -38,4 +44,8 @@ dependencies {
     implementation rootProject.ext.dependencies.core_ktx
     implementation rootProject.ext.dependencies.appcompat
     implementation rootProject.ext.dependencies.material
+    implementation rootProject.ext.dependencies.koinScop
+    implementation rootProject.ext.dependencies.KoinViewModel
+    implementation rootProject.ext.dependencies.koinFragmet
+    implementation rootProject.ext.dependencies.kotlinReflect
 }
