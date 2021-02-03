@@ -16,6 +16,13 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+//        引入ARouter
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -40,12 +47,14 @@ android {
 }
 
 dependencies {
-    implementation rootProject.ext.dependencies.kotlin_stdlib
-    implementation rootProject.ext.dependencies.core_ktx
-    implementation rootProject.ext.dependencies.appcompat
-    implementation rootProject.ext.dependencies.material
-    implementation rootProject.ext.dependencies.koinScop
-    implementation rootProject.ext.dependencies.KoinViewModel
-    implementation rootProject.ext.dependencies.koinFragmet
-    implementation rootProject.ext.dependencies.kotlinReflect
+    api rootProject.ext.dependencies.kotlin_stdlib
+    api rootProject.ext.dependencies.core_ktx
+    api rootProject.ext.dependencies.appcompat
+    api rootProject.ext.dependencies.material
+    api rootProject.ext.dependencies.koinScop
+    api rootProject.ext.dependencies.KoinViewModel
+    api rootProject.ext.dependencies.koinFragmet
+    api rootProject.ext.dependencies.kotlinReflect
+//    api rootProject.ext.dependencies.aroutreApi
+//    api rootProject.ext.dependencies.arouterCompiler
 }

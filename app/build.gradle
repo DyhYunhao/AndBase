@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -27,6 +28,13 @@ android {
         versionName rootProject.ext.android.version_name
         ndk {
             abiFilters /*'armeabi', 'armeabi-v7a',  'x86',  */ 'armeabi-v7a'
+        }
+
+        //arouter配置
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
         }
 
     }
@@ -62,7 +70,10 @@ android {
 }
 
 dependencies {
-    if (rootProject.ext.isMoudle) {
-        implementation project(':moudle:base')
-    }
+    implementation project(':modules:base')
+    implementation project(':modules:messageboard')
+    api rootProject.ext.dependencies.aroutreApi
+    kapt rootProject.ext.dependencies.arouterCompiler
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 }
