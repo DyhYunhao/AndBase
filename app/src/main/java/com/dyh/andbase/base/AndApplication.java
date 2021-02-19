@@ -2,6 +2,7 @@ package com.dyh.andbase.base;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.dyh.base.BaseApplication;
+import com.tencent.mmkv.MMKV;
 
 /**
  * describe: 示例框架的application
@@ -20,5 +21,8 @@ public class AndApplication extends BaseApplication {
 
         //官方推荐在Application中初始化
         ARouter.init(AndApplication.this);
+
+        //mmkv初始化
+        MMKV.initialize(this);
     }
 }

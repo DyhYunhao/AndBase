@@ -55,6 +55,6 @@ dependencies {
     api rootProject.ext.dependencies.KoinViewModel
     api rootProject.ext.dependencies.koinFragmet
     api rootProject.ext.dependencies.kotlinReflect
-//    api rootProject.ext.dependencies.aroutreApi
-//    api rootProject.ext.dependencies.arouterCompiler
+    api rootProject.ext.dependencies.mmkv
+    api rootProject.ext.dependencies.relinker
 }
